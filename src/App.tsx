@@ -10,7 +10,7 @@ export default function App() {
       <div className="relative w-[400px] h-[660px] bg-[#0f3460] rounded-[32px] border-[3px] border-[#e94560] shadow-[0_0_60px_rgba(233,69,96,0.3)] overflow-hidden">
         <div className="absolute inset-[5px] rounded-[27px] bg-[#1a1a2e] overflow-hidden">
           <div className="h-[300px]">
-            <GameScene dexNumber={game.dexNumber} />
+            <GameScene dexNumber={game.dexNumber} actionTrigger={game.actionTrigger} isSleeping={game.isSleeping} />
           </div>
           <Hud
             pokemonName={game.pokemonName}

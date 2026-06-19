@@ -23,6 +23,7 @@ export interface GameAPI {
   isSleeping: boolean
   pokemonName: string
   dexNumber: number
+  actionTrigger: number
   feed: () => void
   play: () => void
   clean: () => void
@@ -48,6 +49,7 @@ export function useGameState(): GameAPI {
   const [stats, setStats] = useState<Stats>(INITIAL_STATS)
   const [age, setAge] = useState(0)
   const [isSleeping, setIsSleeping] = useState(false)
+  const [actionTrigger, setActionTrigger] = useState(0)
   const ageRef = useRef(0)
 
   useEffect(() => {
@@ -95,6 +97,7 @@ export function useGameState(): GameAPI {
   }, [isSleeping])
 
   const feed = useCallback(() => {
+    setActionTrigger(n => n + 1)
     setStats(prev => {
       const next = { ...prev, hunger: Math.min(100, prev.hunger + 25) }
       next.health = computeHealth(next)
@@ -103,6 +106,7 @@ export function useGameState(): GameAPI {
   }, [])
 
   const play = useCallback(() => {
+    setActionTrigger(n => n + 1)
     setStats(prev => {
       if (prev.energy < 10) return prev
       const next = {
@@ -116,6 +120,7 @@ export function useGameState(): GameAPI {
   }, [])
 
   const clean = useCallback(() => {
+    setActionTrigger(n => n + 1)
     setStats(prev => {
       const next = { ...prev, hygiene: Math.min(100, prev.hygiene + 35) }
       next.health = computeHealth(next)
@@ -136,6 +141,7 @@ export function useGameState(): GameAPI {
     isSleeping,
     pokemonName: config.name,
     dexNumber: config.dex,
+    actionTrigger,
     feed,
     play,
     clean,
