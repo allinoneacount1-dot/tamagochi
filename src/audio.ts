@@ -25,7 +25,7 @@ function multi(notes: [number, number, OscillatorType?, number?][]) {
 }
 
 export const sfx = {
-  feed() { multi([[523, 0.12], [659, 0.15, 'sine', 0.06]]) },
+  feed() { multi([[523, 0.12], [659, 0.15]]) },
   play() { multi([[784, 0.08, 'square', 0.04], [988, 0.08, 'square', 0.04], [1175, 0.12, 'square', 0.04]]) },
   clean() { tone(200, 0.2, 'sawtooth', 0.03) },
   evolution() { multi([[262, 0.25], [330, 0.25], [392, 0.25], [523, 0.3], [659, 0.3], [784, 0.4]]) },
@@ -34,4 +34,9 @@ export const sfx = {
   success() { multi([[523, 0.08], [659, 0.08], [784, 0.15]]) },
   death() { tone(200, 0.5, 'sawtooth', 0.05); setTimeout(() => tone(100, 0.8, 'sawtooth', 0.04), 200) },
   select() { tone(440, 0.08); setTimeout(() => tone(660, 0.1), 60) },
+  hit() { tone(150, 0.15, 'square', 0.06); tone(100, 0.1, 'sawtooth', 0.04) },
+  attack() { tone(400, 0.1, 'square', 0.04); setTimeout(() => tone(600, 0.08, 'square', 0.03), 50) },
+  encounter() { tone(300, 0.15, 'triangle', 0.06); setTimeout(() => tone(450, 0.2, 'triangle', 0.06), 120) },
+  faint() { multi([[400, 0.2], [300, 0.3], [200, 0.5]]) },
+  levelUp() { multi([[523, 0.1], [659, 0.1], [784, 0.1], [1047, 0.3]]) },
 }
