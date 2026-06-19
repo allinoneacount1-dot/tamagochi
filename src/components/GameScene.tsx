@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, useGLTF, ContactShadows, Html } from '@react-three/drei'
 import type { Object3D } from 'three'
 
-const MODEL_BASE = 'https://raw.githubusercontent.com/Pokemon-3D-api/assets/main/models/opt/regular'
+const MODEL_BASE = '/models'
 
 ;[172, 25, 26].forEach(n => useGLTF.preload(`${MODEL_BASE}/${n}.glb`))
 
